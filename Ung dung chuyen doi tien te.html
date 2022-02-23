@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        table, th, td, tr {
+            text-align: center;
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>From Currency</th>
+        <th>To Currency</th>
+    </tr>
+    <tr>
+        <td><input type="text" id="amount"></td>
+        <td>
+            <select name="from" id="from">
+                <option value="VND">VND</option>
+                <option value="USD">USD</option>
+            </select>
+        </td>
+        <td>
+            <select name="to" id="to">
+                <option value="VND">VND</option>
+                <option value="USD">USD</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3"><h3><input type="button" value="Convert" onclick="convert()"></h3></td>
+    </tr>
+    <tr>
+        <td colspan="3"><h4 id = "result"></h4></td>
+    </tr>
+</table>
+
+<script>
+    function convert(from) {
+        let amount = parseFloat(document.getElementById("amount").value);
+        let convertFrom = document.getElementById("from").value;
+        let convertTo = document.getElementById("to").value;
+        let result = document.getElementById("result");
+        if (convertFrom == convertTo) {
+            document.getElementById("result").innerHTML = ("Result: " + amount + " " + convertTo);
+        }
+        if (convertFrom == "VND" && convertTo == "USD") {
+            let afterConvert = amount / 23000;
+            result.innerHTML = ("Result: " + afterConvert + " " + convertTo);
+        }
+        if (convertFrom == "USD" && convertTo == "VND") {
+            let afterConvert = amount * 23000;
+            result.innerHTML = ("Result: " + afterConvert + " " + convertTo);
+        }
+    }
+</script>
+
+</body>
+</html>
